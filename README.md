@@ -1,4 +1,4 @@
-# 🧊 Remap
+# 🧊 [Remap](https://npmjs.com/package/@rbxts/remap)
 
 A module for transforming read-only maps in Roblox TypeScript. Intended for using `ReadonlyMap` in a state manager like [Reflex](https://github.io/littensy/reflex/).
 
@@ -30,9 +30,7 @@ map = Remap.set(map, "baz", 3);
 
 ```ts
 function set<K, V>(object: ReadonlyMap<K, V>, key: K, value: V): ReadonlyMap<K, V>;
-```
 
-```ts
 Remap.set(map, "foo", 1); // { foo: 1 }
 ```
 
@@ -42,9 +40,7 @@ Sets the value at `key` to `value`.
 
 ```ts
 function delete<K, V>(object: ReadonlyMap<K, V>, key: K): ReadonlyMap<K, V>;
-```
 
-```ts
 Remap.delete(map, "foo"); // deletes the entry at "foo"
 ```
 
@@ -54,9 +50,7 @@ Deletes the entry with the given `key` from the map.
 
 ```ts
 function deleteValue<K, V>(object: ReadonlyMap<K, V>, value: V): ReadonlyMap<K, V>;
-```
 
-```ts
 Remap.deleteValue(map, 1); // deletes the entry with the value 1
 ```
 
@@ -66,9 +60,7 @@ Deletes the entry with the given `value` from the map.
 
 ```ts
 function update<K, V>(object: ReadonlyMap<K, V>, key: K, updater: (value?: V) => V | undefined): ReadonlyMap<K, V>;
-```
 
-```ts
 Remap.update(map, "foo", (value = 0) => value + 1); // adds 1 to the value at "foo"
 ```
 
@@ -78,9 +70,7 @@ Updates the value at `key` with the result of `updater`. Returning `undefined` f
 
 ```ts
 function map<K, V, R>(object: ReadonlyMap<K, V>, updater: (value: V, key: K) => R | undefined): ReadonlyMap<K, R>;
-```
 
-```ts
 Remap.map(map, (value, key) => value + 1); // adds 1 to each value
 ```
 
@@ -90,9 +80,7 @@ Updates each entry in the map with the result of `updater`. Returning `undefined
 
 ```ts
 function filter<K, V>(object: ReadonlyMap<K, V>, predicate: (value: V, key: K) => boolean): ReadonlyMap<K, V>;
-```
 
-```ts
 Remap.filter(map, (value, key) => value > 1); // removes values less than 1
 ```
 
@@ -106,9 +94,7 @@ function reduce<K, V, R>(
 	reducer: (accumulator: R, value: V, key: K) => R,
 	initialValue: R,
 ): R;
-```
 
-```ts
 Remap.reduce(map, (accumulator, value, key) => accumulator + value, 0); // sum of values
 ```
 
@@ -118,9 +104,7 @@ Reduces the map to a single value using `reducer`. The result of each call to `r
 
 ```ts
 function assign<K, V>(map: ReadonlyMap<K, V | None>, ...sources: ReadonlyMap<K, V | None>[]): ReadonlyMap<K, V>;
-```
 
-```ts
 Remap.assign(map, { foo: 1, bar: 2, baz: 3 }, { baz: Remap.None }); // { foo: 1, bar: 2 }
 ```
 
@@ -132,11 +116,8 @@ If the key is a string, number, or symbol, you may pass objects to `...sources` 
 
 ```ts
 function clone<K, V>(object: ReadonlyMap<K, V>): Map<K, V>;
-```
 
-```ts
-const copy = Remap.clone(map);
-copy.set("foo", 1);
+Remap.clone(map).set("foo", 1);
 ```
 
 Returns a mutable shallow copy of the map.
@@ -145,11 +126,8 @@ Returns a mutable shallow copy of the map.
 
 ```ts
 function clear<K, V>(object: ReadonlyMap<K, V>): Map<K, V>;
-```
 
-```ts
-const empty = Remap.clear(map);
-empty.set("foo", 1);
+Remap.clear(map).set("foo", 1);
 ```
 
 Returns an empty writable map of the same type as `object`.
@@ -158,9 +136,7 @@ Returns an empty writable map of the same type as `object`.
 
 ```ts
 function omit<K, V>(object: ReadonlyMap<K, V>, ...keys: K[]): ReadonlyMap<K, V>;
-```
 
-```ts
 Remap.omit(map, "foo", "bar"); // { baz: 3 }
 ```
 
@@ -170,9 +146,7 @@ Returns a subset of the map excluding the keys specified.
 
 ```ts
 function pick<K, V>(object: ReadonlyMap<K, V>, ...keys: K[]): ReadonlyMap<K, V>;
-```
 
-```ts
 Remap.pick(map, "foo", "bar"); // { foo: 1, bar: 2 }
 ```
 
