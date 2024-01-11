@@ -36,6 +36,8 @@ Remap.set(map, "foo", 1); // { foo: 1 }
 
 Sets the value at `key` to `value`.
 
+---
+
 ### `delete(object, key)`
 
 ```ts
@@ -45,6 +47,8 @@ Remap.delete(map, "foo"); // deletes the entry at "foo"
 ```
 
 Deletes the entry with the given `key` from the map.
+
+---
 
 ### `deleteValue(object, value)`
 
@@ -56,6 +60,8 @@ Remap.deleteValue(map, 1); // deletes the entry with the value 1
 
 Deletes the entry with the given `value` from the map.
 
+---
+
 ### `update(object, key, updater)`
 
 ```ts
@@ -65,6 +71,8 @@ Remap.update(map, "foo", (value = 0) => value + 1); // adds 1 to the value at "f
 ```
 
 Updates the value at `key` with the result of `updater`. Returning `undefined` from `updater` will delete the entry.
+
+---
 
 ### `map(object, updater)`
 
@@ -76,6 +84,8 @@ Remap.map(map, (value, key) => value + 1); // adds 1 to each value
 
 Updates each entry in the map with the result of `updater`. Returning `undefined` from `updater` will delete the entry.
 
+---
+
 ### `filter(object, predicate)`
 
 ```ts
@@ -85,6 +95,8 @@ Remap.filter(map, (value, key) => value > 1); // removes values less than 1
 ```
 
 Deletes all entries from the map for which `predicate` returns `false`.
+
+---
 
 ### `reduce(object, reducer, initialValue)`
 
@@ -100,6 +112,8 @@ Remap.reduce(map, (accumulator, value, key) => accumulator + value, 0); // sum o
 
 Reduces the map to a single value using `reducer`. The result of each call to `reducer` is passed as the first argument to the next call.
 
+---
+
 ### `assign(object, ...sources)`
 
 ```ts
@@ -112,6 +126,8 @@ Returns a new map with the keys and values from `sources` merged into `map`. Use
 
 If the key is a string, number, or symbol, you may pass objects to `...sources` instead of maps.
 
+---
+
 ### `clone(object)`
 
 ```ts
@@ -121,6 +137,8 @@ Remap.clone(map).set("foo", 1);
 ```
 
 Returns a mutable shallow copy of the map.
+
+---
 
 ### `clear(object)`
 
@@ -132,6 +150,8 @@ Remap.clear(map).set("foo", 1);
 
 Returns an empty writable map of the same type as `object`.
 
+---
+
 ### `omit(object, ...keys)`
 
 ```ts
@@ -141,6 +161,8 @@ Remap.omit(map, "foo", "bar"); // { baz: 3 }
 ```
 
 Returns a subset of the map excluding the keys specified.
+
+---
 
 ### `pick(object, ...keys)`
 
