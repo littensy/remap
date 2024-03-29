@@ -26,6 +26,8 @@ function Remap.delete(object, key)
 	return copy
 end
 
+Remap.deleteKey = Remap.delete
+
 function Remap.deleteValue(object, valueToDelete)
 	for key, value in object do
 		if value == valueToDelete then
@@ -37,6 +39,16 @@ function Remap.deleteValue(object, valueToDelete)
 end
 
 function Remap.update(object, key, updater)
+	local copy = table.clone(object)
+	copy[key] = updater(copy[key])
+	return if copy[key] == object[key] then object else copy
+end
+
+function Remap.change(object, key, updater)
+	if object[key] == nil then
+		return object
+	end
+
 	local copy = table.clone(object)
 	copy[key] = updater(copy[key])
 	return if copy[key] == object[key] then object else copy
