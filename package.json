@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/remap",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"description": "Functions for transforming readonly maps",
 	"main": "src/init.lua",
 	"scripts": {
