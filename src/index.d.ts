@@ -36,7 +36,6 @@ declare namespace Remap {
 	 */
 	function deleteKey<K, V>(object: AnyMap<K, V>, key: K): ReadonlyMap<K, V>;
 	function deleteKey<T>(object: T, key: keyof T): T;
-	export { deleteKey as delete };
 
 	/**
 	 * Deletes the entry with the given `value` from the map.
@@ -146,4 +145,8 @@ declare namespace Remap {
 	 */
 	function pick<K, V>(object: AnyMap<K, V>, ...keys: K[]): ReadonlyMap<K, V>;
 	function pick<T, K extends keyof T>(object: T, ...keys: K[]): Pick<T, K>;
+}
+
+declare namespace Remap {
+	export { deleteKey as delete };
 }
