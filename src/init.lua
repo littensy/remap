@@ -31,7 +31,7 @@ Remap.deleteKey = Remap.delete
 function Remap.deleteValue(object, valueToDelete)
 	for key, value in object do
 		if value == valueToDelete then
-			return delete(object, key)
+			return Remap.delete(object, key)
 		end
 	end
 
